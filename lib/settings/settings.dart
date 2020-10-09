@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+
+class Settings extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text("Settings"), actions: <Widget>[
+          Icon(Icons.settings),
+        ]),
+        body: ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text("Edit My Card"),
+              onTap: () {},
+            )
+          ],
+        ));
+  }
+}
