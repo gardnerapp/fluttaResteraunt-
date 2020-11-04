@@ -14,12 +14,12 @@ class ZeroItemDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Beechmont Tavern',
-        theme: ThemeData(primaryColor: Colors.red),
+        theme: ThemeData(primaryColor: Colors.deepOrange),
         home: Scaffold(
             appBar: AppBar(
               title: Text(
                 item.name,
-                style: TextStyle(color: Colors.yellow),
+                style: TextStyle(color: Colors.white),
               ),
               leading: new IconButton(icon: new Icon(Icons.arrow_back), onPressed: (){
                 Navigator.pop(context);
@@ -69,7 +69,7 @@ class ZeroItemDetails extends StatelessWidget {
                       child: RaisedButton(
                         onPressed: () => BlocProvider.of<FoodBloc>(context).add(FoodEvent.add(CheckOutItem(name: this.item.name, price: this.item.price))),
                         child: Text("Order!"),
-                        color: Colors.red,
+                        color: Colors.deepOrange,
                         splashColor: Colors.amber,
                       )),
                 ]))));

@@ -28,8 +28,8 @@ class Beech extends StatelessWidget {
     ],
       child:
       MaterialApp(
-        title: 'Beechmont Tavern',
-        theme: ThemeData(primaryColor: Colors.red),
+        title: 'Corey\'s Corner',
+        theme: ThemeData(primaryColor: Colors.deepOrange),
             home: //make this a custom app
           Home()));
   }
@@ -87,18 +87,30 @@ class Home extends StatelessWidget {
                   Icon(Icons.exit_to_app),
                 ],
               ),
-              onTap: (){},),
-              Text("914-636-9533"),
-              Text("11:30 AM - 1:00AM"),
-              Text("750 North Ave, New Rochelle, NY")
+              onTap: (){
+
+              },),
+              Center(child: Column(
+                children: <Widget>[
+                  SizedBox(height: 10.0,),
+                  Text("914-636-9533", style: drawStyle(),),
+                  SizedBox(height: 10.0,),
+                  Text("11:30 AM - 1:00AM", style: drawStyle(),),
+                  SizedBox(height: 10.0,),
+                  Text("750 North Ave, New Rochelle, NY", style: drawStyle(),)
+                ],
+              ),)
+
             ],
 
           )),
           appBar: AppBar(
+            elevation: 20.0,
             title: const Text(
               'Corey\'s Corner',
-              style: TextStyle(color: Colors.yellow),
+              style: TextStyle(color: Colors.white),
             ),
+            backgroundColor: Colors.deepOrange,
             actions: <Widget>[
               IconButton(
                 icon: new Icon(Icons.shopping_basket),
@@ -123,4 +135,10 @@ class Home extends StatelessWidget {
           )),
     );
   }
+}
+TextStyle drawStyle(){
+  TextStyle(
+    fontSize:50.0,
+    color: Colors.black
+  );
 }

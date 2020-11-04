@@ -23,9 +23,10 @@ class _ItemDetailsState extends State<ItemDetails> {
     CheckOutItem _checkOutItem =  new CheckOutItem(name: this.widget.item.name, price: this.widget.item.price, sides: this.sides );
     return Scaffold(
             appBar: AppBar(
+              backgroundColor: Colors.deepOrange,
               title: Text(
                 this.widget.item.name,
-                style: TextStyle(color: Colors.yellow),
+                style: TextStyle(color: Colors.white),
               ),
               leading: new IconButton(icon: new Icon(Icons.arrow_back), onPressed: (){
                 Navigator.pop(context);
@@ -60,17 +61,18 @@ class _ItemDetailsState extends State<ItemDetails> {
             color: Colors.black,
           ),
           new Padding(padding: EdgeInsets.all(2.5)),
-          Row( mainAxisAlignment: MainAxisAlignment.center,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(Icons.arrow_downward),
               Text("Scroll Down and Select Your Options",
-                      style: TextStyle(color: Colors.black, fontSize: 18.0)),
+                  style: TextStyle(color: Colors.black, fontSize: 18.0)),
               Icon(Icons.arrow_downward),
             ],
           ),
-                  Padding(padding: EdgeInsets.all(2.5)),
-                   Wrap(
-                      children: List.generate(this.widget.item.options.length,
+          Padding(padding: EdgeInsets.all(2.5)),
+          Wrap(
+              children: List.generate(this.widget.item.options.length,
                               (index) => Column(
                               children: [
                                 Row(
@@ -112,12 +114,13 @@ class _ItemDetailsState extends State<ItemDetails> {
                       width: 500.0,
                       height: 75.0,
                       child: RaisedButton(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                         onPressed: () {
                             BlocProvider.of<FoodBloc>(context).add(FoodEvent.add(_checkOutItem));
                             BlocProvider.of<PriceCubit>(context).add(_checkOutItem.price);
                             },
-                        child: Text("Order!"),
-                        color: Colors.red,
+                        child: Text("Order!", style: TextStyle(fontSize: 20.0),),
+                        color: Colors.deepOrange,
                         splashColor: Colors.amber,
                       )),
                 ])));
@@ -240,7 +243,7 @@ class _SwitchState extends State<Switch> {
             inactiveThumbColor: Colors.white,
             secondary: Icon(
               Icons.fastfood,
-              color: Colors.amber,
+              color: Colors.deepOrange,
             ),
           ),
         ));

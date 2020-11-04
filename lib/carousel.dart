@@ -10,14 +10,14 @@ class ImageCarousel extends StatelessWidget {
         height: 300.0,
         child: Carousel(
           images: [
-            AssetImage("lib/assets/images/wing.png"),
-            AssetImage("lib/assets/images/burger.png"),
-            AssetImage("lib/assets/images/wrap.png"),
+            AssetImage("lib/assets/images/unsplash1.jpg"),
+            AssetImage("lib/assets/images/unsplash2.jpg"),
+            AssetImage("lib/assets/images/unsplash3.jpg"),
           ],
           autoplay: false,
           animationCurve: Curves.fastLinearToSlowEaseIn,
         ),
-),
+      ),
     );
   }
 }

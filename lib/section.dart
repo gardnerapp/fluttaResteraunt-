@@ -19,15 +19,16 @@ class Section extends StatelessWidget {
       Directionality(textDirection:TextDirection.ltr, child: Text(data.sectionName, style: TextStyle(
           color: Colors.white, fontSize: 32.0,
       ))),
-      color: Colors.red,
-      padding: EdgeInsets.all(25.0),
+      color: Colors.deepOrange,
+      padding: EdgeInsets.all(20.0),
       splashColor: Colors.transparent,
       colorBrightness: Brightness.light,
       textTheme: ButtonTextTheme.primary,
-      elevation: 15.0,
+      elevation: 20.0,
       shape:  RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
-    side: BorderSide(color: Colors.white))
+    side: BorderSide(color: Colors.white)),
+
       );
   }
 }

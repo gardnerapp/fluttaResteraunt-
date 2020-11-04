@@ -10,14 +10,12 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-        title: "Tap an Item to get started !",
-        theme: ThemeData(primaryColor: Colors.red),
-        home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.deepOrange,
             title: Text(
               this.data.sectionName,
-              style: TextStyle(color: Colors.yellow),
+              style: TextStyle(color: Colors.white),
             ),
             leading: new IconButton(icon: new Icon(Icons.arrow_back), onPressed: (){
               Navigator.pop(context);
@@ -32,7 +30,7 @@ class Menu extends StatelessWidget {
           ),
             body: ListView( scrollDirection: Axis.vertical,
               children: <Widget>[getItemWidgets(data.sectionItems)],),
-    ));
+    );
   }
 
   getItemWidgets(List<Item> list){
