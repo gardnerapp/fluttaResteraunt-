@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'menu_item.dart';
-import 'data.dart';
-import 'checkout.dart';
+import 'menu_item_panel.dart';
+import '../data.dart';
+import '../checkout.dart';
 
-class Menu extends StatelessWidget {
+class SectionItemList extends StatelessWidget {
   final SectionData data;
-  Menu(this.data);
+  SectionItemList(this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +29,15 @@ class Menu extends StatelessWidget {
             ],
           ),
             body: ListView( scrollDirection: Axis.vertical,
+              padding: EdgeInsets.all(2.0),
               children: <Widget>[getItemWidgets(data.sectionItems)],),
     );
   }
 
   getItemWidgets(List<Item> list){
+    //TODO Can I Do Awy with this Column
     return new Column( crossAxisAlignment: CrossAxisAlignment.end, mainAxisAlignment: MainAxisAlignment.center,
-        children: list.map((food)=> Directionality(textDirection: TextDirection.ltr, child: MenuItem(food))).toList());
+        children: list.map((food)=> Directionality(textDirection: TextDirection.ltr, child: MenuItemPanel(food))).toList());
 }
 }
 

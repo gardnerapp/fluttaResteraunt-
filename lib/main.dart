@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/carousel.dart';
 import 'package:untitled/checkout.dart';
-import 'package:untitled/section.dart';
+import 'package:untitled/menu/section_panel.dart';
 import 'data.dart';
 import 'models/delegate.dart';
 import 'models/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'settings/settings.dart';
 
-
+//TODO refactor 0 Item details so you DRY
 void main(){
   Bloc.observer =
   FoodBlocObserver();
   runApp(Beech());
 }
+
+//SectionPanel => SectionItemList => ItemPanel
 
 class Beech extends StatelessWidget {
   @override
@@ -29,7 +31,10 @@ class Beech extends StatelessWidget {
       child:
       MaterialApp(
         title: 'Corey\'s Corner',
-        theme: ThemeData(primaryColor: Colors.deepOrange),
+        theme: ThemeData(primaryColor: Colors.deepOrange,
+
+
+        ),
             home: //make this a custom app
           Home()));
   }
@@ -38,8 +43,7 @@ class Beech extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
+    return Scaffold(
         drawer: Drawer(
           elevation: 20.0,
           child: ListView(
@@ -120,20 +124,21 @@ class Home extends StatelessWidget {
             ],
           ),
           body: ListView(
+            padding: EdgeInsets.all(2.0),
             children: <Widget>[
               ImageCarousel(),
-              Section(starters),
-              Section(salads),
-              Section(soups),
-              Section(wraps),
-              Section(sandwhiches),
-              Section(burgers),
-              Section(baskets),
-              Section(hotDogs),
-              Section(desserts),
+              // Panels/section
+              SectionPanel(starters),
+              SectionPanel(salads),
+              SectionPanel(soups),
+              SectionPanel(wraps),
+              SectionPanel(sandwhiches),
+              SectionPanel(burgers),
+              SectionPanel(baskets),
+              SectionPanel(hotDogs),
+              SectionPanel(desserts),
             ],
-          )),
-    );
+          ));
   }
 }
 TextStyle drawStyle(){
