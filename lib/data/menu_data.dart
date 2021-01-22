@@ -1,23 +1,9 @@
-import 'add_data.dart';
-import 'side_data.dart';
+import 'package:untitled/models/item.dart';
+import 'package:untitled/models/section_data.dart';
+import '../models/add_data.dart';
 
-class SectionData{
-  final String sectionName;
-  final List<Item> sectionItems;
-  SectionData(this.sectionName, this.sectionItems);
-}
 
-class Item{
-  final String name;
-  final double price;
-  final List<SideList> options;
-  final String info;
-  final List<AddList> addOns;
-  Item(this.name, this.price, this.options, this.info, this.addOns);
-}
 
-//TODO FIX ITEMS< GRAVY NOT INPUTTED FOR DISCO FRIES !
-//TODO add textonsubmit to get additional details when placing an order
 
 final List<Item> starterItems = [Item("Nachos ", 13.95, NachoOptions," Freshly cooked tortilla chips topped with cheese, lettuce, tomato, guacamole, sour cream and pico de gallo.", NachoExtras),
   Item("6 Traditional Beechmont's Famous Wings ", 8.95,wingOptions, "Served with homemade blue cheese and celery sticks. ", wingExtras),

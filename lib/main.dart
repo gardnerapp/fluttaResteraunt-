@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/carousel.dart';
 import 'package:untitled/checkout.dart';
 import 'package:untitled/menu/section_panel.dart';
-import 'data.dart';
+import 'data/menu_data.dart';
 import 'models/delegate.dart';
 import 'models/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,5 +1,5 @@
-import 'data.dart';
-import 'side_data.dart';
+import '../data/menu_data.dart';
+import '../side_data.dart';
 
 //Wings
 SideList WingFlavors = SideList('Wing Flavors:',[Plain, Mild ,Hot ,Teriyaki ,BBQ ,SweetChilli ,GarlicParm]);

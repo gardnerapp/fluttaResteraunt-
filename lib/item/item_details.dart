@@ -1,10 +1,10 @@
 import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/models/bloc.dart';
-import 'side_data.dart';
-import 'data.dart';
+import '../models/item.dart';
+import '../side_data.dart';
 import 'package:flutter/material.dart';
-import 'checkout.dart';
+import '../checkout.dart';
 
 
 class ItemDetails extends StatefulWidget {
@@ -18,45 +18,53 @@ class ItemDetails extends StatefulWidget {
 class _ItemDetailsState extends State<ItemDetails> {
   List<String> sides = [];
   String instructions;
+
   @override
   Widget build(BuildContext context) {
-    CheckOutItem _checkOutItem =  new CheckOutItem(name: this.widget.item.name, price: this.widget.item.price, sides: this.sides );
+    CheckOutItem _checkOutItem = new CheckOutItem(
+        name: this.widget.item.name,
+        price: this.widget.item.price,
+        sides: this.sides);
     return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.deepOrange,
-              title: Text(
-                this.widget.item.name,
-                style: TextStyle(color: Colors.white),
-              ),
-              leading: new IconButton(icon: new Icon(Icons.arrow_back), onPressed: (){
+        appBar: AppBar(
+          backgroundColor: Colors.deepOrange,
+          title: Text(
+            this.widget.item.name,
+            style: TextStyle(color: Colors.white),
+          ),
+          leading: new IconButton(
+              icon: new Icon(Icons.arrow_back),
+              onPressed: () {
                 Navigator.pop(context);
               }),
-              actions: <Widget>[
-                IconButton(
-                  icon: new Icon(Icons.shopping_basket),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder:
-                        (context) => Checkout()
-                    ));
-                  },
-                  iconSize: 30.0,
-                ),
-              ],
+          actions: <Widget>[
+            IconButton(
+              icon: new Icon(Icons.shopping_basket),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Checkout()));
+              },
+              iconSize: 30.0,
             ),
-            body: Container(
-                child: ListView(padding: const EdgeInsets.all(8), children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      new Padding(padding: EdgeInsets.all(5.0)),
-                      Expanded(
-                          child: Text(this.widget.item.info,
-                              style: TextStyle(color: Colors.black,
-                                fontSize: 20.0,)
-                          )), new Padding(padding: EdgeInsets.all(2.0)),
-                    ],
-                  ),
-                  new Padding(padding: EdgeInsets.all(2.5)),
-                  new Divider(
+          ],
+        ),
+        body: Container(
+            child:
+                ListView(padding: const EdgeInsets.all(8), children: <Widget>[
+          Row(
+            children: <Widget>[
+              new Padding(padding: EdgeInsets.all(5.0)),
+              Expanded(
+                  child: this.widget.item.info.isNotEmpty ? Text(this.widget.item.info,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20.0,
+                      )) : SizedBox(height: 10)),
+              new Padding(padding: EdgeInsets.all(2.0)),
+            ],
+          ),
+          new Padding(padding: EdgeInsets.all(2.5)),
+          new Divider(
             height: 5.0,
             color: Colors.black,
           ),
@@ -65,68 +73,83 @@ class _ItemDetailsState extends State<ItemDetails> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(Icons.arrow_downward),
-              Text("Scroll Down and Select Your Options",
-                  style: TextStyle(color: Colors.black, fontSize: 18.0)),
+              this.widget.item.options == null ||
+                      this.widget.item.addOns == null
+                  ? SizedBox(height: 10)
+                  : Text("Scroll Down and Select Your Options",
+                      style: TextStyle(color: Colors.black, fontSize: 18.0)),
               Icon(Icons.arrow_downward),
             ],
           ),
           Padding(padding: EdgeInsets.all(2.5)),
-          Wrap(
-              children: List.generate(this.widget.item.options.length,
-                              (index) => Column(
-                              children: [
-                                Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      new Padding(padding: EdgeInsets.all(5.0)),
-                                        Expanded(
-                                            child: Center(
-                                              child: Text(
-                                              this.widget.item.options[index].msg,
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 22.0,
-                                              ),
-                                          ),
-                                            ),
-                                      ),
-                                      new Padding(padding: EdgeInsets.all(5.0)),
-                                    ]),
-                                MyList(this.widget.item.options[index].items,
-                                onSelected: (String item) => setState(() => sides.add(item)),
-                                )
-                              ]))),
-                  Wrap(
-                    children: List.generate(
-                        this.widget.item.addOns.length,
-                        (index) => MySwitchList(this.widget.item.addOns[index],)),
-                  ),
-
-                  Container(
-                    child: TextField(
-                      decoration:
-                      InputDecoration(labelText: "Additional Instructions"),
-                    ),
-                    height: 75,
-                  ),
-                  SizedBox(
-                      width: 500.0,
-                      height: 75.0,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                        onPressed: () {
-                            BlocProvider.of<FoodBloc>(context).add(FoodEvent.add(_checkOutItem));
-                            BlocProvider.of<PriceCubit>(context).add(_checkOutItem.price);
-                            },
-                        child: Text("Order!", style: TextStyle(fontSize: 20.0),),
-                        color: Colors.deepOrange,
-                        splashColor: Colors.amber,
-                      )),
-                ])));
+          this.widget.item.options == null
+              ? SizedBox(height: 10)
+              : Wrap(
+                  children: List.generate(
+                      this.widget.item.options.length,
+                      (index) => Column(children: [
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.max,
+                            children: [
+                              new Padding(padding: EdgeInsets.all(5.0)),
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    this.widget.item.options[index].msg,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 22.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Padding(padding: EdgeInsets.all(5.0)),
+                            ]),
+                        MyList(
+                          this.widget.item.options[index].items,
+                          onSelected: (String item) =>
+                              setState(() => sides.add(item)),
+                        )
+                      ]))),
+          this.widget.item.addOns == null
+              ? SizedBox(height: 10)
+              : Wrap(
+                  children: List.generate(
+                      this.widget.item.addOns.length,
+                      (index) => MySwitchList(
+                            this.widget.item.addOns[index],
+                          )),
+                ),
+          Container(
+            child: TextField(
+              decoration: InputDecoration(labelText: "Additional Instructions"),
+            ),
+            height: 75,
+          ),
+          SizedBox(
+              width: 500.0,
+              height: 75.0,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                onPressed: () {
+                  BlocProvider.of<FoodBloc>(context)
+                      .add(FoodEvent.add(_checkOutItem));
+                  BlocProvider.of<PriceCubit>(context).add(_checkOutItem.price);
+                },
+                child: Text(
+                  "Order!",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                color: Colors.deepOrange,
+                splashColor: Colors.amber,
+              )),
+        ])));
   }
 }
 
+//For sides, pick one from group
 class MyList extends StatefulWidget {
   final List<Side> items;
   final Function(String) onSelected;
@@ -213,6 +236,7 @@ class _MySwitchListState extends State<MySwitchList> {
 
 }
 
+// for additionals, have price pick as many as you'd like
 class Switch extends StatefulWidget {
   final Add item;
   Switch(this.item);

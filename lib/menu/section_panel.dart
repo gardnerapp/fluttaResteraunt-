@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/models/section_data.dart';
 import 'package:untitled/panels/panel.dart';
 import 'section_Item_list.dart';
-import '../data.dart';
+
 
 //Section Name, Routes to list of items in section
 // Styling from panel

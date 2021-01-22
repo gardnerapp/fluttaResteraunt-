@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/models/item.dart';
 import 'package:untitled/panels/panel.dart';
-import '../data.dart';
-import '../item_details.dart';
-import '../zero_item_details.dart';
+import '../item/item_details.dart';
+
 
 class MenuItemPanel extends StatelessWidget {
   final Item item;
@@ -30,16 +30,9 @@ class MenuItemPanel extends StatelessWidget {
         ],
       ),
       onPressed: () {
-        //TODO REFActor
-        if (item.options != null)
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ItemDetails(item)),
-          );
-        else
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ZeroItemDetails(item)),
           );
       },
     );

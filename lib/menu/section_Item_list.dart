@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/models/item.dart';
+import 'package:untitled/models/section_data.dart';
 import 'menu_item_panel.dart';
-import '../data.dart';
 import '../checkout.dart';
 
 class SectionItemList extends StatelessWidget {
