@@ -32,6 +32,7 @@ dependencies:
   flutter_bloc: ^6.0.1
   stripe_payment: ^1.0.8
   pimp_my_button: ^1.0.0
+  http: ^0.12.1
 
 
 

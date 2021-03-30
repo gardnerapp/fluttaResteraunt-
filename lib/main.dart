@@ -32,8 +32,9 @@ class Beech extends StatelessWidget {
       MaterialApp(
         title: 'Corey\'s Corner',
         theme: ThemeData(primaryColor: Colors.deepOrange,
-
-
+          appBarTheme: AppBarTheme(
+            elevation: 16.0
+          )
         ),
             home: //make this a custom app
           Home()));

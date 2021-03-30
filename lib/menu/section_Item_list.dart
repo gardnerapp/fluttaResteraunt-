@@ -35,10 +35,17 @@ class SectionItemList extends StatelessWidget {
     );
   }
 
-  getItemWidgets(List<Item> list){
+  getItemWidgets(List<Item> list) {
     //TODO Can I Do Awy with this Column
-    return new Column( crossAxisAlignment: CrossAxisAlignment.end, mainAxisAlignment: MainAxisAlignment.center,
-        children: list.map((food)=> Directionality(textDirection: TextDirection.ltr, child: MenuItemPanel(food))).toList());
+    return new Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: list
+            .map((food) => Directionality(
+                textDirection: TextDirection.ltr, child: MenuItemPanel(food)))
+            .toList());
+  }
 }
-}
+
+//ReUsable AppBar, Icon Button Styling, MenuItemPanel, then MenuItemList
 

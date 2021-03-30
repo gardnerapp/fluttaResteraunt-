@@ -105,13 +105,13 @@ class _ItemDetailsState extends State<ItemDetails> {
                                 ),
                               ),
                               new Padding(padding: EdgeInsets.all(5.0)),
-                            ]),
-                        MyList(
-                          this.widget.item.options[index].items,
-                          onSelected: (String item) =>
-                              setState(() => sides.add(item)),
-                        )
-                      ]))),
+                                ]),
+                            MyList(
+                              this.widget.item.options[index].items,
+                              onSelected: (String item) =>
+                                  setState(() => sides.add(item)),
+                            )
+                          ]))),
           this.widget.item.addOns == null
               ? SizedBox(height: 10)
               : Wrap(
@@ -148,6 +148,8 @@ class _ItemDetailsState extends State<ItemDetails> {
         ])));
   }
 }
+
+//TODO move into another file and rename to common sense stuff
 
 //For sides, pick one from group
 class MyList extends StatefulWidget {

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//TODO add addons
+//TODO add addons OLD ?
+//TODO mStore User in State
 
 enum EventType{add, delete}
 
