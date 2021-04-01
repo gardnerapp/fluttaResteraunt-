@@ -2,7 +2,10 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:untitled/api/authentication.dart';
-import 'package:untitled/authentication_layouts/form_Styles/text_container.dart';
+import 'package:untitled/authentication_layouts/form_Styles/customRaisedIconButton.dart';
+import 'package:untitled/authentication_layouts/form_Styles/raisedButtonIcon.dart';
+import 'package:untitled/authentication_layouts/form_Styles/styles.dart';
+import 'form_Styles/textFornContainer.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -28,7 +31,7 @@ class _SignInState extends State<SignIn> {
             SizedBox(height: 30.0,),
             TextFormContainer(
               child: TextFormField(
-                // todo  decoration: ,
+                decoration: textInputDecoration("Phone", context) ,
                 onChanged: (val) => setState(()=> phone = val),
               ),
             ),
@@ -37,7 +40,7 @@ class _SignInState extends State<SignIn> {
             ),
             TextFormContainer(
               child: TextFormField(
-                // todo  decoration: ,
+                decoration: textInputDecoration("Password", context),
                 onChanged: (val) => setState(()=> passwrd = val),
               ),
             ),
@@ -59,8 +62,9 @@ class _SignInState extends State<SignIn> {
             SizedBox(
               height: 25.0,
             ),
-            Container(
-
+            TextFormContainer(
+              child: customRaisedIconButton(
+                  "Sign In", raisedButtonIcon(Icons.send), context, () {}),
             )
           ],
         ),
