@@ -15,7 +15,7 @@ class _SignInState extends State<SignIn> {
   AuthenticationRequest auth = AuthenticationRequest();
   final _key = GlobalKey<FormState>();
   String phone;
-  String passwrd;
+  String password;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +40,7 @@ class _SignInState extends State<SignIn> {
             TextFormContainer(
               child: TextFormField(
                 decoration: textInputDecoration("Password", context),
-                onChanged: (val) => setState(()=> passwrd = val),
+                onChanged: (val) => setState(()=> password = val),
               ),
             ),
             SizedBox(
