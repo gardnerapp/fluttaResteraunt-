@@ -1,10 +1,9 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:untitled/api/authentication.dart';
 import 'package:untitled/authentication_layouts/form_Styles/customRaisedIconButton.dart';
 import 'package:untitled/authentication_layouts/form_Styles/raisedButtonIcon.dart';
 import 'package:untitled/authentication_layouts/form_Styles/styles.dart';
+import '../home.dart';
 import 'form_Styles/textFornContainer.dart';
 
 class SignIn extends StatefulWidget {
@@ -64,7 +63,10 @@ class _SignInState extends State<SignIn> {
             ),
             TextFormContainer(
               child: customRaisedIconButton(
-                  "Sign In", raisedButtonIcon(Icons.send), context, () {}),
+                  "Sign In", raisedButtonIcon(Icons.send), context, () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+              }),
             )
           ],
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:untitled/main.dart';
+import 'package:untitled/home.dart';
 import 'package:untitled/models/bloc.dart';
 import 'package:pimp_my_button/pimp_my_button.dart';
 import 'checkoutWidgets.dart';

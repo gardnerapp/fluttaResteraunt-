@@ -32,14 +32,14 @@ class _ItemDetailsState extends State<ItemDetails> {
             this.widget.item.name,
             style: TextStyle(color: Colors.white),
           ),
-          leading: new IconButton(
-              icon: new Icon(Icons.arrow_back),
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);
               }),
           actions: <Widget>[
             IconButton(
-              icon: new Icon(Icons.shopping_basket),
+              icon: Icon(Icons.shopping_basket),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Checkout()));
@@ -53,18 +53,18 @@ class _ItemDetailsState extends State<ItemDetails> {
                 ListView(padding: const EdgeInsets.all(8), children: <Widget>[
           Row(
             children: <Widget>[
-              new Padding(padding: EdgeInsets.all(5.0)),
+              Padding(padding: EdgeInsets.all(5.0)),
               Expanded(
                   child: this.widget.item.info.isNotEmpty ? Text(this.widget.item.info,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20.0,
                       )) : SizedBox(height: 10)),
-              new Padding(padding: EdgeInsets.all(2.0)),
+               Padding(padding: EdgeInsets.all(2.0)),
             ],
           ),
-          new Padding(padding: EdgeInsets.all(2.5)),
-          new Divider(
+           Padding(padding: EdgeInsets.all(2.5)),
+           Divider(
             height: 5.0,
             color: Colors.black,
           ),
