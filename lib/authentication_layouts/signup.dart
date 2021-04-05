@@ -13,13 +13,16 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
   AuthenticationRequest auth = AuthenticationRequest();
   final _key = GlobalKey<FormState>();
+
   String name;
   String email;
   String phone;
   String password;
   String passwordConfirmation;
+
   static Pattern emailPattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp emailRegex = new RegExp(emailPattern);
@@ -37,18 +40,18 @@ class _SignUpState extends State<SignUp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text("Create Your Account"),
-              Container(
-                  width: 400,
-                  child: TextFormField(
-                    decoration: textInputDecoration("Name", context),
-                    onChanged: (val) {
-                      setState(() {
-                        name = val;
-                      });
-                    },
-                    validator: (val) =>
-                        val.isEmpty ? "Please enter your name" : null,
-                  )),
+              TextFormContainer(
+                child: TextFormField(
+                  decoration: textInputDecoration("Name", context),
+                  onChanged: (val) {
+                    setState(() {
+                      name = val;
+                    });
+                  },
+                  validator: (val) =>
+                  val.isEmpty ? "Please enter your name" : null,
+                ),
+              ),
               TextFormContainer(
                   child: TextFormField(
                       decoration: textInputDecoration("Email", context),

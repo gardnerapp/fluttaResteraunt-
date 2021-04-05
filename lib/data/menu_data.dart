@@ -2,9 +2,6 @@ import 'package:untitled/models/item.dart';
 import 'package:untitled/models/section_data.dart';
 import '../models/add_data.dart';
 
-
-
-
 final List<Item> starterItems = [Item("Nachos ", 13.95, NachoOptions," Freshly cooked tortilla chips topped with cheese, lettuce, tomato, guacamole, sour cream and pico de gallo.", NachoExtras),
   Item("6 Traditional Beechmont's Famous Wings ", 8.95,wingOptions, "Served with homemade blue cheese and celery sticks. ", wingExtras),
   Item("12 Traditional Beechmont's Famous Wings ", 16.95,wingOptions, "Served with homemade blue cheese and celery sticks. ", wingExtras),
